@@ -74,7 +74,7 @@ private fetchDatafromSharePointList()
 
  
  var reactHandler = this;  
- alert(this.props.siteurl);
+ //alert(this.props.siteurl);
    jquery.ajax({  
        url: `${this.props.siteurl}/_api/web/lists/getbytitle('CourseDetails')/items`, 
        //url: `https://ashish345.sharepoint.com/sites/intranet/_api/web/lists/getbytitle('CourseDetails')/items`, 
