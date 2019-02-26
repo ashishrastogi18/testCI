@@ -13,6 +13,7 @@ import { ISpfxProps } from './components/ISpfxProps';
 
 export interface ISpfxWebPartProps {
   description: string;
+  siteurl: string;
 }
 
 export default class SpfxWebPart extends BaseClientSideWebPart<ISpfxWebPartProps> {
@@ -21,7 +22,8 @@ export default class SpfxWebPart extends BaseClientSideWebPart<ISpfxWebPartProps
     const element: React.ReactElement<ISpfxProps > = React.createElement(
       Spfx,
       {
-        description: this.properties.description
+        description: this.properties.description,
+        siteurl : this.context.pageContext.web.absoluteUrl
       }
     );
 
