@@ -3,6 +3,8 @@ import styles from './Spfx.module.scss';
 import { ISpfxProps } from './ISpfxProps';
 import * as jquery from 'jquery';
 import { escape } from '@microsoft/sp-lodash-subset';
+import {  
+  SPHttpClient, SPHttpClientResponse, ISPHttpClientOptions} from '@microsoft/sp-http'; 
 export interface IReactSpfxState{  
   items:[  
         {  
@@ -27,6 +29,36 @@ export default class Spfx extends React.Component<ISpfxProps,{}> {
       ]
     };  
   }  
+
+  public componentDidMount() {
+    setInterval(
+     () => this.retrieveData(),
+     1000
+   );
+ }
+
+  private retrieveData()
+  {
+    var reactHandler = this;  
+    let currentWebUrl = this.context.pageContext.web.absoluteUrl;
+    let requestUrl = currentWebUrl.concat("/_api/web/lists/getbytitle('CourseDetails')/items")   
+  alert(requestUrl);
+this.context.spHttpClient.get(requestUrl, SPHttpClient.configurations.v1)  
+    .then((response: SPHttpClientResponse) => {  
+        if (response.ok) {  
+            response.json().then((responseJSON) => {  
+                if (responseJSON!=null && responseJSON.value!=null){ 
+                   alert(responseJSON + requestUrl);
+        //let itemCount:number = parseInt(responseJSON.value.toString());  
+                }  
+                else
+                {
+                  alert("error");
+                }
+            });  
+        }  
+    });  
+  }
 
   /*public componentDidMount() {
     setInterval(
