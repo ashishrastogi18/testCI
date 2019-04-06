@@ -32,35 +32,7 @@ export default class Spfx extends React.Component<ISpfxProps,IReactSpfxState> {
     };  
   }  
 
-  /*public componentDidMount() {
-    setInterval(
-     () => this.retrieveData(),
-     1000
-   );
- }
-
-  private retrieveData()
-  {
-    var reactHandler = this;  
-    let currentWebUrl = this.context.pageContext.web.absoluteUrl;
-    let requestUrl = currentWebUrl.concat("/_api/web/lists/getbytitle('CourseDetails')/items");   
-  alert(requestUrl);
-this.context.spHttpClient.get(requestUrl, SPHttpClient.configurations.v1)  
-    .then((response: SPHttpClientResponse) => {  
-        if (response.ok) {  
-            response.json().then((responseJSON) => {  
-                if (responseJSON!=null && responseJSON.value!=null){ 
-                   alert(responseJSON + requestUrl);
-        //let itemCount:number = parseInt(responseJSON.value.toString());  
-                }  
-                else
-                {
-                  alert("error");
-                }
-            });  
-        }  
-    });  
-  }*/
+ 
 
   public componentDidMount() {
     setInterval(
@@ -77,7 +49,6 @@ private fetchDatafromSharePointList()
  //alert(this.props.siteurl);
    jquery.ajax({  
        url: `${this.props.siteurl}/_api/web/lists/getbytitle('CourseDetails')/items`, 
-       //url: `https://ashish345.sharepoint.com/sites/intranet/_api/web/lists/getbytitle('CourseDetails')/items`, 
        type: "GET",  
        headers:{'Accept': 'application/json; odata=verbose;'},  
        success: function(resultData) {  
@@ -97,8 +68,7 @@ private fetchDatafromSharePointList()
 
       <div className={styles.panelStyle} > 
         <br></br>
-        <div><Label>I am a office ui fabric label.</Label></div>
-        <div><Button>I am a office ui fabric button.</Button></div>
+        
         <br></br> 
         <div className={styles.tableCaptionStyle} >Fetch Course Details from SharePointList using SPFx,RESTAPI,React JS
           Data on page changes with change in the SharePointList  </div>
@@ -130,21 +100,6 @@ private fetchDatafromSharePointList()
 
 
   ); 
-    /* return (
-      <div className={ styles.spfx }>
-        <div className={ styles.container }>
-          <div className={ styles.row }>
-            <div className={ styles.column }>
-              <span className={ styles.title }>Welcome to SharePoint!</span>
-              <p className={ styles.subTitle }>Customize SharePoint experiences using Web Parts.</p>
-              <p className={ styles.description }>{escape(this.props.description)}</p>
-              <a href="https://aka.ms/spfx" className={ styles.button }>
-                <span className={ styles.label }>Learn more</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    ); */
+    
   }
 }
